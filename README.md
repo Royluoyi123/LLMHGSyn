@@ -145,7 +145,7 @@ Repeat Steps 1–4 with `FOLD=1` through `FOLD=5`. Set `DATASET=DrugCombDB` to r
 python -m unittest discover -s tests -v
 ```
 
-The molecular encoder test requires PyTorch Geometric. The lexical SMILES fallback is intended only for smoke tests, not for paper experiments.
+The molecular encoder test requires PyTorch Geometric.
 
 ## Repository contents
 
