@@ -143,16 +143,16 @@ Repeat Steps 1–4 with `FOLD=1` through `FOLD=5`. Set `DATASET=DrugCombDB` to r
 
 Use the row matching the dataset and split when running Step 4 for folds 1–5. These values are the rank-1 configurations recorded in `outputs/grid_search/<split>/five_fold_results.csv` (GDSC) and `outputs_DrugCombDB/grid_search/<split>/five_fold_results.csv` (DrugCombDB). The reported scores are five-fold mean ± standard deviation.
 
-| Dataset | Split | Config ID | Hidden dim | Learning rate | Weight decay | Dropout | Distill weight | Temperature | ROC-AUC | AUPR |
-| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| GDSC | `warm_start` | 466 | 512 | 1e-4 | 1e-5 | 0.1 | 0.1 | 0.05 | 0.9117 ± 0.0052 | 0.4522 ± 0.0213 |
-| GDSC | `drug` | 462 | 512 | 1e-4 | 1e-5 | 0.1 | 0.01 | 0.2 | 0.7608 ± 0.0393 | 0.1557 ± 0.0199 |
-| GDSC | `drug_pairs` | 511 | 512 | 1e-4 | 0 | 0.1 | 0.1 | 0.05 | 0.8852 ± 0.0108 | 0.3653 ± 0.0263 |
-| GDSC | `cell_line` | 460 | 512 | 1e-4 | 1e-5 | 0.1 | 0.01 | 0.05 | 0.8314 ± 0.0141 | 0.2555 ± 0.0135 |
-| DrugCombDB | `warm_start` | 470 | 512 | 1e-4 | 1e-5 | 0.2 | 0.01 | 0.1 | 0.8996 ± 0.0040 | 0.4841 ± 0.0152 |
-| DrugCombDB | `drug` | 178 | 128 | 1e-4 | 0 | 0.4 | 0.1 | 0.05 | 0.7606 ± 0.0381 | 0.1673 ± 0.0498 |
-| DrugCombDB | `drug_pairs` | 468 | 512 | 1e-4 | 1e-5 | 0.1 | 0.1 | 0.2 | 0.8593 ± 0.0213 | 0.3826 ± 0.0468 |
-| DrugCombDB | `cell_line` | 461 | 512 | 1e-4 | 1e-5 | 0.1 | 0.01 | 0.1 | 0.8498 ± 0.0091 | 0.3406 ± 0.0288 |
+| Dataset | Split | Hidden dim | Learning rate | Weight decay | Dropout | Distill weight | Temperature | ROC-AUC | AUPR |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| GDSC | `warm_start` | 512 | 1e-4 | 1e-5 | 0.1 | 0.1 | 0.05 | 0.9117 ± 0.0052 | 0.4522 ± 0.0213 |
+| GDSC | `drug` | 512 | 1e-4 | 1e-5 | 0.1 | 0.01 | 0.2 | 0.7608 ± 0.0393 | 0.1557 ± 0.0199 |
+| GDSC | `drug_pairs` | 512 | 1e-4 | 0 | 0.1 | 0.1 | 0.05 | 0.8852 ± 0.0108 | 0.3653 ± 0.0263 |
+| GDSC | `cell_line` | 512 | 1e-4 | 1e-5 | 0.1 | 0.01 | 0.05 | 0.8314 ± 0.0141 | 0.2555 ± 0.0135 |
+| DrugCombDB | `warm_start` | 512 | 1e-4 | 1e-5 | 0.2 | 0.01 | 0.1 | 0.8996 ± 0.0040 | 0.4841 ± 0.0152 |
+| DrugCombDB | `drug` | 128 | 1e-4 | 0 | 0.4 | 0.1 | 0.05 | 0.7606 ± 0.0381 | 0.1673 ± 0.0498 |
+| DrugCombDB | `drug_pairs` | 512 | 1e-4 | 1e-5 | 0.1 | 0.1 | 0.2 | 0.8593 ± 0.0213 | 0.3826 ± 0.0468 |
+| DrugCombDB | `cell_line` | 512 | 1e-4 | 1e-5 | 0.1 | 0.01 | 0.1 | 0.8498 ± 0.0091 | 0.3406 ± 0.0288 |
 
 For every row, set `--hgnn-layers 2`, `--epochs 3000`, `--cosine-weight 0.1`, `--distill-warmup-ratio 0.1`, `--distill-ramp-epochs 50`, `--grad-clip 5.0`, `--early-stop-metric roc_auc`, `--early-stop-patience 200`, `--early-stop-min-delta 1e-4`, and `--seed 42`. Use the row's values for `--hidden-dim`, `--learning-rate`, `--weight-decay`, `--dropout`, `--distill-weight`, and `--temperature`. Keep the remaining `main.py` options at their defaults and use the matching fold's teacher features from Step 3.
 
