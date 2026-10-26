@@ -1,0 +1,20 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.venv/
+.idea/
+.vscode/
+
+# Generated instructions, adapters, checkpoints, caches, metrics, and plots.
+outputs/
+outputs_DrugCombDB/
+
+# Local datasets and generated processed data are not part of the code upload.
+Data/
+distillation/dataset/Cora/processed/
+
+# Download the teacher model separately.
+models/
+
+# Cached embeddings are not used by the four-step pipeline.
+Data/LLM_features/ensem_emb_*.pickle
